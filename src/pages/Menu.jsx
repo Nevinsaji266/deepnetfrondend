@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Home from "./Home"; // Import the Home component
+import { serverUrl } from '../api';
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -12,7 +13,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/menus");
+        const res = await axios.get(`${serverUrl}/menus`);
         setMenus(res.data);
       } catch (err) {
         setError("Failed to load menus. Please try again later.");
